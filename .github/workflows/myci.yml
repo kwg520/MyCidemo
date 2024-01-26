@@ -1,0 +1,26 @@
+name: Build and Package APK
+
+on:
+  push:
+    branches:
+      - main  # 触发条件：当代码推送到主分支时执行
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2  # 检出代码仓库
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'  # 选择 JDK 版本
+
+      - name: Build with Gradle
+        run: ./gradlew build  # 使用 Gradle 构建项目
+
+      - name: Package APK
+        run: ./gradlew assembleRelease  # 生成 Release 版本的 APK
