@@ -3,7 +3,7 @@ name: Build and Package APK
 on:
   push:
     branches:
-      - main  # 触发条件：当代码推送到主分支时执行
+      - main  # 当代码推送到主分支时执行
 
 jobs:
   build:
@@ -14,12 +14,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2  # 检出代码仓库
 
-      - name: Set up JetBrains Runtime 17
+      - name: Set up JDK 8
         uses: actions/setup-java@v2
         with:
-          distribution: 'jre'  # 指定使用 JRE
-          java-version: '17'   # 指定 JDK 版本为 17
-          jre: 'jbr'            # 指定使用 JetBrains Runtime
+          distribution: 'adopt'
+          java-version: '8'
 
       - name: Build with Gradle
         run: ./gradlew build  # 使用 Gradle 构建项目
