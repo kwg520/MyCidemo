@@ -25,3 +25,9 @@ jobs:
 
       - name: Package APK
         run: ./gradlew assembleDebug  # 生成 Debug 版本的 APK
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-debug
+          path: app/build/outputs/apk/debug
