@@ -14,11 +14,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2  # 检出代码仓库
 
-      - name: Set up JDK 1.8
+      - name: Set up JetBrains Runtime 17
         uses: actions/setup-java@v2
         with:
-          distribution: 'adopt'
-          java-version: '11'  # 选择 JDK 版本为 1.8
+          distribution: 'jre'  # 指定使用 JRE
+          java-version: '17'   # 指定 JDK 版本为 17
+          jre: 'jbr'            # 指定使用 JetBrains Runtime
 
       - name: Build with Gradle
         run: ./gradlew build  # 使用 Gradle 构建项目
